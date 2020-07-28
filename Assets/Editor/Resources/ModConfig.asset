@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
+  m_Name: ModConfig
+  m_EditorClassIdentifier: 
+  id: xelBrownBricks
+  title: Brown Bricks
+  author: Mirage Xel, Pruz
+  description: 'From Minecraft.
+
+    Brown Bricks regular module by Mirage Xel.
+
+    Manual/Idea by Pruz.
+
+    Module ID: xelBrownBricks
+
+    TEMP MANUAL URL: https://docs.google.com/document/d/1qFPypDWSjrQathVBRV4-lCmzxOeFfgnvIChDNT0Ny5w/edit?usp=sharing'
+  version: 1.2
+  outputFolder: build
+  previewImage: {fileID: 2800000, guid: 20f6b164c3272db40b8b7605434a6be6, type: 3}
