@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using KModkit;
 using System;
-
+using System.Linq;
 public class BrownBricks : MonoBehaviour {
     public KMSelectable[] bricks;
     public MeshRenderer[] brickRenderes;
     public Material[] brickMats;
     int[] posLookup = new int[] { 0, 3, 2, 1, 2 };
-    int[] brickLookup = new int[] { 2, 3, 4, 1, 0 };
+    int[] brickLookup = new int[] { 2, 3, 4, 0, 1};
     int[][][] answerLookup = new int[][][] {
     new int[][] {
     new int[] {0,4},
@@ -17,7 +17,7 @@ public class BrownBricks : MonoBehaviour {
     },
     new int[][] {
     new int[] {4,3},
-    new int[] {0,2,1,2}
+    new int[] {0,2,1,3}
     },
     new int[][] {
     new int[] {2,0},
@@ -91,7 +91,7 @@ public class BrownBricks : MonoBehaviour {
         }
         else if (lookBrick == lookup[0][1])
         {
-            answerBrick = lookup[1][0];
+            answerBrick = lookup[1][1];
         }
         else
         {
@@ -107,7 +107,8 @@ public class BrownBricks : MonoBehaviour {
     {
         if(!solved)
         {
-            if (Array.IndexOf(bricks, brick) == answerBrick)
+            brick.AddInteractionPunch(.5f);
+            if (Array.IndexOf(bricks, brick) == Array.IndexOf(brickPos, answerBrick))
             {
                 module.HandlePass();
                 solved = true;
@@ -126,4 +127,25 @@ public class BrownBricks : MonoBehaviour {
             }
         }
 	}
+#pragma warning disable 414
+    private string TwitchHelpMessage = "'!{0} press 'tl/tr/bl/br' to press a block. e.g. '!{0} press tr'";
+#pragma warning restore 414
+    IEnumerator ProcessTwitchCommand(string command)
+    {
+        command = command.ToLowerInvariant();
+        string[] validCommands = new string[4] { "tl", "tr", "bl", "br" };
+        string[] commandArray = command.Split(' ');
+        if (commandArray.Length != 2 || commandArray[0] != "press" || !validCommands.Contains(commandArray[1]))
+        {
+            yield return "sendtochaterror @{0}, invalid command.";
+            yield break;
+        }
+        yield return null;
+        bricks[Array.IndexOf(validCommands, commandArray[1])].OnInteract();
+    }
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        yield return null;
+        bricks[Array.IndexOf(brickPos, answerBrick)].OnInteract();
+    }
 }

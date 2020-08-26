@@ -23,6 +23,6 @@ MonoBehaviour:
     Module ID: xelBrownBricks
 
     TEMP MANUAL URL: https://docs.google.com/document/d/1qFPypDWSjrQathVBRV4-lCmzxOeFfgnvIChDNT0Ny5w/edit?usp=sharing'
-  version: 1.2
+  version: 1.5.1
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 20f6b164c3272db40b8b7605434a6be6, type: 3}
