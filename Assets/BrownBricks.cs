@@ -25,7 +25,7 @@ public class BrownBricks : MonoBehaviour {
     },
     new int[][] {
     new int[] {1,2},
-    new int[] {3,4,1,0}
+    new int[] {3,4,2,0}
     },
         new int[][] {
     new int[] {3,1},
@@ -41,7 +41,7 @@ public class BrownBricks : MonoBehaviour {
     int lookBrick;
     int answerBrick;
     int moduleId;
-    static int moduleIdCounter;
+    static int moduleIdCounter = 1;
     bool solved;
     void Awake()
     {
